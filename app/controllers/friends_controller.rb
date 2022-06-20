@@ -1,30 +1,26 @@
 class FriendsController < ApplicationController
   before_action :set_friend, only: %i[ show edit update destroy ]
 
-  # GET /friends or /friends.json
   def index
     @friends = Friend.all
   end
 
-  # GET /friends/1 or /friends/1.json
   def show
   end
 
   def new
-  session[:friend_params] ||= {}
-   @friend  = Friend.new(session[:friend_params])
-   @friend .current_step = session[:order_step]
-end
+    session[:friend_params] ||= {}
+     @friend  = Friend.new(session[:friend_params])
+     @friend .current_step = session[:order_step]
+  end
 
-  # GET /friends/1/edit
   def edit
   end
 
 
   def create
-    session[:order_params].deep_merge!(params[:order]) if params[:friend]
-    @friend = Order.new(session[:friend_params])
-    @friend.current_step = session[:order_step]
+    @friend = Friend.new(session[:friend_params])
+    @friend.current_step = session[:friend_step]
     if @friend.valid?
       if params[:back_button]
         @friend.previous_step
@@ -33,12 +29,12 @@ end
       else
         @friend.next_step
       end
-      session[:order_step] = @friend.current_step
+      session[:friend_step] = @friend.current_step
     end
     if @friend.new_record?
       render "new"
     else
-      session[:order_step] = session[:friend_params] = nil
+      session[:friend_step] = session[:friend_params] = nil
       flash[:notice] = "Order saved!"
       redirect_to @friend
     end
