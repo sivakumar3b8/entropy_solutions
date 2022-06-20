@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>First name:</strong>
+  <%= @friend.first_name %>
+</p>
+
+<p>
+  <strong>Last name:</strong>
+  <%= @friend.last_name %>
+</p>
+
+<p>
+  <strong>Phone number:</strong>
+  <%= @friend.phone_number %>
+</p>
+
+<p>
+  <strong>Bank account number:</strong>
+  <%= @friend.bank_account_number %>
+</p>
+
+<p>
+  <strong>Ifsc code:</strong>
+  <%= @friend.ifsc_code %>
+</p>
+
+<p>
+  <strong>Swift number:</strong>
+  <%= @friend.swift_number %>
+</p>
+
+<p>
+  <strong>Index:</strong>
+  <%= @friend.index %>
+</p>
+
+<p>
+  <strong>New:</strong>
+  <%= @friend.new %>
+</p>
+
+<p>
+  <strong>Show:</strong>
+  <%= @friend.show %>
+</p>
+
+<%= link_to 'Edit', edit_friend_path(@friend) %> |
+<%= link_to 'Back', friends_path %>
