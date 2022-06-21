@@ -9,7 +9,7 @@ class FriendsController < ApplicationController
   end
 
   def new
-    session[:friend_params] ||= {}
+     session[:friend_params] ||= {}
      @friend  = Friend.new(session[:friend_params])
      @friend .current_step = session[:order_step]
   end
@@ -17,29 +17,21 @@ class FriendsController < ApplicationController
   def edit
   end
 
-
-  def create
-    @friend = Friend.new(session[:friend_params])
-    @friend.current_step = session[:friend_step]
-    if @friend.valid?
-      if params[:back_button]
-        @friend.previous_step
-      elsif @friend.last_step?
-        @friend.save if @friend.all_valid?
+   def create
+    @friend = Friend.new(friend_params)
+    respond_to do |format|
+      if @friend.save
+        format.html { redirect_to @friend, notice: 'Friend was successfully created.' }
+        format.json { render :show, status: :created, location: @friend }
       else
-        @friend.next_step
+        format.html { render :new }
+        format.json { render json: @friend.errors, status: :unprocessable_entity }
       end
-      session[:friend_step] = @friend.current_step
-    end
-    if @friend.new_record?
-      render "new"
-    else
-      session[:friend_step] = session[:friend_params] = nil
-      flash[:notice] = "Order saved!"
-      redirect_to @friend
     end
   end
 
+
+ 
   # PATCH/PUT /friends/1 or /friends/1.json
   def update
     respond_to do |format|
@@ -71,6 +63,6 @@ class FriendsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def friend_params
-      params.require(:friend).permit(:first_name, :last_name, :phone_number, :bank_account_number, :ifsc_code, :swift_number, :index, :new, :show)
+      params.require(:friend).permit(:first_name, :last_name, :phone_number, :bank_account_number, :ifsc_code, :swift_number)
     end
 end

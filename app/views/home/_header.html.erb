@@ -9,24 +9,30 @@
    
       <% if user_signed_in? %>
         <li class="nav-item">
-          <%= link_to "Add Friend", new_friend_path, :style => "margin-left: 50px;" , class: "btn btn-outline-primary"%>
+          <%= link_to "Add Friend", new_friend_path, :style => "margin-left: 50px;" , class: "btn btn-outline-info"%>
         </li>
+
 
         <li class="nav-item">
-          <%= link_to "Edit Profile", edit_user_registration_path, :style => "margin-left: 50px;", class: "btn btn-outline-primary" %>
+          <%= link_to "Edit Profile", edit_user_registration_path, :style => "margin-left: 50px;", class: "btn btn-outline-info" %>
         </li>
 
+          <li class="nav-item">
+          <%= link_to "Friend List", friends_path, :style => "margin-left: 50px;" , class: "btn btn-outline-info"%>
+        </li>
+
+
          <form class="form-inline my-2 my-lg-0">
-           <%= link_to "Sign Out", destroy_user_session_path, method: :delete, :style => "margin-left: 1120px;", class: "btn btn-outline-success my-2 my-sm-0"%>
+           <%= link_to "Sign Out", destroy_user_session_path, method: :delete, :style => "margin-left: 1000px;", class: "btn btn-outline-success my-2 my-sm-0"%>
         </form>
 
       <% else %>
         <li class="nav-item">
-          <%= link_to "Sign Up", new_user_registration_path, :style => "margin-left: 50px;", class: "btn btn-outline-primary" %>
+          <%= link_to "Sign Up", new_user_registration_path, :style => "margin-left: 50px;", class: "btn btn-outline-info" %>
         </li>
 
         <li class="nav-item">
-          <%= link_to "Sign In", new_user_session_path, :style => "margin-left: 50px;" , class: "btn btn-outline-primary"%>
+          <%= link_to "Sign In", new_user_session_path, :style => "margin-left: 50px;" , class: "btn btn-outline-info"%>
         </li>
       <% end %>
     

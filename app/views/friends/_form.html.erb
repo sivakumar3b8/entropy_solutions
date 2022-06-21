@@ -12,6 +12,13 @@
   <% end %>
 
 <%= render :partial => 'user_step', :locals => {:form => form} %>
-<%= render :partial => 'account_step', :locals => {:form => form} %>
-<%= render :partial => 'confirmation_step', :locals => {:form => form} %>
+<%= render :partial => 'account_step', :locals => {:form => form} , :class => "secound_form", :display => "none"%>
+
 <% end %>
+
+<script>
+
+  $(".btn-btn-primary").click(function(){
+  $(".secound_form").show();
+});
+</script>

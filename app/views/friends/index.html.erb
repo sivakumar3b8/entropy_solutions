@@ -2,8 +2,8 @@
 
 <h1>Friends</h1>
 
-<table>
-  <thead>
+ <table class="table table-striped table-bordered table-hover">
+    <thead class="thead-dark">
     <tr>
       <th>First name</th>
       <th>Last name</th>
@@ -11,9 +11,6 @@
       <th>Bank account number</th>
       <th>Ifsc code</th>
       <th>Swift number</th>
-      <th>Index</th>
-      <th>New</th>
-      <th>Show</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -26,13 +23,10 @@
         <td><%= friend.phone_number %></td>
         <td><%= friend.bank_account_number %></td>
         <td><%= friend.ifsc_code %></td>
-        <td><%= friend.swift_number %></td>
-        <td><%= friend.index %></td>
-        <td><%= friend.new %></td>
-        <td><%= friend.show %></td>
-        <td><%= link_to 'Show', friend %></td>
-        <td><%= link_to 'Edit', edit_friend_path(friend) %></td>
-        <td><%= link_to 'Destroy', friend, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= friend.swift_number %></td>        
+        <td><%= link_to 'Show', friend , class: "btn btn-outline-success"%></td>
+        <td><%= link_to 'Edit', edit_friend_path(friend), class: "btn btn-outline-info" %></td>
+        <td><%= link_to 'Destroy', friend, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-outline-danger" %></td>
       </tr>
     <% end %>
   </tbody>
@@ -40,4 +34,4 @@
 
 <br>
 
-<%= link_to 'New Friend', new_friend_path %>
+<%= link_to 'New Friend', new_friend_path, class: "btn btn-outline-success" %>
